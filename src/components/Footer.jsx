@@ -46,7 +46,7 @@ const Footer = () => {
                   to='/contact'
                   className='nav-link p-0 text-body-secondary'
                 >
-                  Contact Us
+                  Contact Me
                 </Link>
               </li>
             </ul>
@@ -61,11 +61,11 @@ const Footer = () => {
             </ul>
           </div>
           <div className='col mb-3'>
-            <h5 className={textColor}>Follow Us</h5>
+            <h5 className={textColor}>Follow Me</h5>
             <ul className='nav flex-column'>
               <li className='nav-item mb-2'>
                 <a
-                  href='https://github.com/collaboration-work/team-7-react-project'
+                  href='https://github.com/Rahmat-Khavari-Hyper-Island/Google-Book-API-3'
                   className='nav-link p-0 text-body-secondary'
                 >
                   Github
@@ -85,7 +85,7 @@ const Footer = () => {
           <div className='d-flex justify-content-between w-100'>
             <div className='col mb-3'>
               <p className='text-body-secondary' style={{ fontSize: 'larger' }}>
-                TEAM 7
+                Hyper Island Libirary
               </p>
             </div>
             <div className='col mb-3'>
