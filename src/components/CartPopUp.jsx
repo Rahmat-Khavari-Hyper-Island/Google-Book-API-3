@@ -24,12 +24,14 @@ const CartPopUp = ({ isOpen, closeCart }) => {
     >
       <div
         className='container my-5 p-4 mt-0 bg-light'
-        style={{ width: '23rem', overflowY: 'auto' }}
+        style={{ width: '23rem' }}
       >
         <h5 className='text-center mt-3'>My Book Cart</h5>
         <hr />
 
-        <ul>
+        <ul style={{ maxHeight: '30rem', overflowY: 'auto' }}>
+          {' '}
+          {/* Set max height and overflow */}
           {cart.map(
             (
               { id, title, quantity, totalPrice } // Destructure id, title, and quantity from each item
