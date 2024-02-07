@@ -14,7 +14,6 @@ const BookProvider = ({ children }) => {
         throw new Error('Failed to fetch book data');
       }
       const data = await response.json();
-      console.log('data', data);
       setBooks(data.items);
     } catch (error) {
       console.error(error);
