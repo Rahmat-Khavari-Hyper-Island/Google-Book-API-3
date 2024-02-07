@@ -10,7 +10,7 @@ import AccessibilityPage from './pages/AccessibilityPage';
 import BookPage from './pages/BookPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ContactPage from './pages/ContactPage';
-import Homepage from './pages/Homepage';
+import Homepage2 from './pages/HomePage2';
 import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsOfUsePage from './pages/TermsOfUsePage';
@@ -29,7 +29,7 @@ function App() {
         <Header toggleCart={toggleCart} />
         <CartPopUp isOpen={isCartOpen} closeCart={() => setIsCartOpen(false)} />
         <Routes>
-          <Route path='/' element={<Homepage />} />
+          <Route path='/' element={<Homepage2 />} />
           <Route path='/books/:id' element={<BookPage />} />
           <Route path='/checkout' element={<CheckoutPage />} />
           <Route path='/contact' element={<ContactPage />} />
