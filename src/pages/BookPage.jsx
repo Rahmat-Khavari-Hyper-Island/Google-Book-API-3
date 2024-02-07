@@ -49,7 +49,7 @@ const BookPage = () => {
               <RatingStars value={0} edit={false} />
             )}
             <p className='card-text'>{bookDetails.volumeInfo.description}</p>
-            <button className='btn btn-primary'>More Info</button>
+            <button className='btn btn-primary'>Add to cart</button>
           </div>
         </div>
       ) : (

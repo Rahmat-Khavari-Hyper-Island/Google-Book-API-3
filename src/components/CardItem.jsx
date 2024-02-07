@@ -65,6 +65,8 @@ const CardItem = ({
           <RatingStars value={0} edit={false} />
         )}
 
+        <span>{price + ' ' + currency}</span>
+
         <div className='d-flex gap-2 mb-3'>
           {isForSale ? (
             <button className='btn btn-primary' onClick={addToCart}>
