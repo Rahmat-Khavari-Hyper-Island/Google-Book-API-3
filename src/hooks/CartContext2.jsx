@@ -58,8 +58,12 @@ const CartProvider2 = ({ children }) => {
     setCart(updatedCart);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <CartContext2.Provider value={{ cart, addItem, removeItem }}>
+    <CartContext2.Provider value={{ cart, addItem, removeItem, clearCart }}>
       {children}
     </CartContext2.Provider>
   );

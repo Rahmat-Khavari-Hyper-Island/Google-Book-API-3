@@ -8,7 +8,7 @@ const CartPopUp = ({ isOpen, closeCart }) => {
     transition: 'transform 0.9s ease-in-out',
   };
 
-  const { cart, removeItem } = useContext(CartContext2);
+  const { cart, removeItem, clearCart } = useContext(CartContext2);
 
   // Calculate total price
   const totalAmount = cart
@@ -55,7 +55,9 @@ const CartPopUp = ({ isOpen, closeCart }) => {
             CHECKOUT
           </Link>
 
-          <button className='btn btn-danger'>Clear</button>
+          <button className='btn btn-danger' onClick={() => clearCart()}>
+            Clear
+          </button>
 
           <button className='btn btn-secondary' onClick={closeCart}>
             Close Cart
