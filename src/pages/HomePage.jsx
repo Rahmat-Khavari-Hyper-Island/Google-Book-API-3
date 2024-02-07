@@ -7,8 +7,8 @@ const Homepage = () => {
   const { books } = useContext(BookContext);
   const { addItem } = useContext(CartContext2);
 
-  const handleAddItemToCart = (id, title) => {
-    addItem(id, title);
+  const handleAddItemToCart = (id, title, price) => {
+    addItem(id, title, price);
   };
 
   return (
@@ -31,7 +31,13 @@ const Homepage = () => {
                 : ''
             }
             addToCart={() => {
-              handleAddItemToCart(book.id, book.volumeInfo.title);
+              handleAddItemToCart(
+                book.id,
+                book.volumeInfo.title,
+                book.saleInfo.listPrice
+                  ? book.saleInfo.listPrice.amount
+                  : 'No Price'
+              );
             }}
             isForSale={book?.saleInfo?.listPrice !== undefined}
           />
