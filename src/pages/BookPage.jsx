@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import RatingStars from '../components/RatingStars';
+import { CartContext2 } from '../hooks/CartContext2';
 
 const BookPage = () => {
   const { id } = useParams();
-
   const [bookDetails, setBookDetails] = useState(null);
   const [storedRating, setStoredRating] = useState(null);
+  const { addItem } = useContext(CartContext2);
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -17,6 +18,7 @@ const BookPage = () => {
         const data = await response.json();
 
         setBookDetails(data);
+        console.log(data); // Move the console.log statement here
       } catch (error) {
         console.error('Error fetching book details:', error);
       }
@@ -49,7 +51,18 @@ const BookPage = () => {
               <RatingStars value={0} edit={false} />
             )}
             <p className='card-text'>{bookDetails.volumeInfo.description}</p>
-            <button className='btn btn-primary'>Add to cart</button>
+            <button
+              className='btn btn-primary'
+              onClick={() =>
+                addItem(
+                  bookDetails.id,
+                  bookDetails.volumeInfo.title,
+                  bookDetails.saleInfo.listPrice.amount
+                )
+              }
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       ) : (
