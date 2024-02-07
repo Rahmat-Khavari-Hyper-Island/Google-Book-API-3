@@ -7,8 +7,8 @@ const Homepage = () => {
   const { books } = useContext(BookContext);
   const { addItem } = useContext(CartContext2);
 
-  const handleAddItemToCart = (id) => {
-    addItem(id);
+  const handleAddItemToCart = (id, title) => {
+    addItem(id, title);
   };
 
   return (
@@ -31,7 +31,7 @@ const Homepage = () => {
                 : ''
             }
             addToCart={() => {
-              handleAddItemToCart(book.id);
+              handleAddItemToCart(book.id, book.volumeInfo.title);
             }}
             isForSale={book?.saleInfo?.listPrice !== undefined}
           />

@@ -20,7 +20,7 @@ const CartProvider2 = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addItem = (id) => {
+  const addItem = (id, title) => {
     // Check if the item is already in the cart
     const item = cart.find((item) => item.id === id);
 
@@ -32,15 +32,13 @@ const CartProvider2 = ({ children }) => {
       setCart(updatedCart);
     } else {
       // If the item is not in the cart, add it with quantity 1
-      const newItem = { id, quantity: 1 };
+      const newItem = { id, title, quantity: 1 }; // Add title here
       setCart([...cart, newItem]);
     }
   };
 
-  console.log(cart); // Log the updated cart whenever it changes
-
   return (
-    <CartContext2.Provider value={{ addItem }}>
+    <CartContext2.Provider value={{ cart, addItem }}>
       {children}
     </CartContext2.Provider>
   );
