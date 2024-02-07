@@ -1,16 +1,14 @@
 import { useContext } from 'react';
 import CardItem from '../components/CardItem';
 import { BookContext } from '../hooks/bookContext';
-import { CartContext } from '../hooks/CartContext';
-//import { CartContext } from '../hooks/CartContext';
 import { CartContext2 } from '../hooks/CartContext2';
 
 const Homepage = () => {
   const { books } = useContext(BookContext);
   const { additem } = useContext(CartContext2);
 
-  const handleAddItemToCart = () => {
-    additem();
+  const handleAddItemToCart = (id) => {
+    additem(id);
   };
 
   return (
@@ -33,7 +31,7 @@ const Homepage = () => {
                 : ''
             }
             addToCart={() => {
-              handleAddItemToCart(book);
+              handleAddItemToCart(book.id);
             }}
             isForSale={book?.saleInfo?.listPrice !== undefined}
           />
