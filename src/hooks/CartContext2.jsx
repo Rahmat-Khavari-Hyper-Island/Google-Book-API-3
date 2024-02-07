@@ -8,7 +8,12 @@ const CartProvider2 = ({ children }) => {
     const storedCart = localStorage.getItem('cart');
     try {
       const parsedCart = JSON.parse(storedCart);
-      return Array.isArray(parsedCart) ? parsedCart : [];
+      return Array.isArray(parsedCart)
+        ? parsedCart.map((item) => ({
+            ...item,
+            totalPrice: parseFloat((item.quantity * item.price).toFixed(2)),
+          }))
+        : [];
     } catch (error) {
       console.error('Error parsing cart from local storage:', error);
       return [];
@@ -26,13 +31,24 @@ const CartProvider2 = ({ children }) => {
 
     if (item) {
       // If the item is already in the cart, increase its quantity
-      const updatedCart = cart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      );
+      const updatedCart = cart.map((item) => {
+        if (item.id === id) {
+          const newQuantity = item.quantity + 1;
+          const totalPrice = parseFloat((newQuantity * item.price).toFixed(2));
+          return { ...item, quantity: newQuantity, totalPrice };
+        }
+        return item;
+      });
       setCart(updatedCart);
     } else {
       // If the item is not in the cart, add it with quantity 1
-      const newItem = { id, title, price, quantity: 1 }; // Add title here
+      const newItem = {
+        id,
+        title,
+        price,
+        quantity: 1,
+        totalPrice: parseFloat(price.toFixed(2)),
+      }; // Add title here
       setCart([...cart, newItem]);
     }
   };
