@@ -4,7 +4,6 @@ import App from './App.jsx';
 import BookProvider from './hooks/bookContext.jsx';
 import ThemeProvider from './hooks/themeContext.jsx';
 import CartProvider2 from './hooks/CartContext2.jsx';
-
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootswatch/dist/sketchy/bootstrap.min.css';
 
