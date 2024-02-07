@@ -3,6 +3,9 @@ import CardItem from '../components/CardItem';
 import { BookContext } from '../hooks/bookContext';
 import { CartContext2 } from '../hooks/CartContext2';
 
+// Define a placeholder image URL
+const noImage = 'https://example.com/placeholder.jpg';
+
 const Homepage = () => {
   const { books } = useContext(BookContext);
   const { addItem } = useContext(CartContext2);
@@ -17,7 +20,7 @@ const Homepage = () => {
         {books.map((book) => (
           <CardItem
             key={book.id}
-            image={book.volumeInfo.imageLinks.thumbnail ?? noImage}
+            image={book.volumeInfo.imageLinks?.thumbnail ?? noImage}
             title={book.volumeInfo.title}
             id={book.id}
             price={
