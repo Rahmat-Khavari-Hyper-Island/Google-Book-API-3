@@ -1,19 +1,19 @@
 import { useContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeContext } from './hooks/themeContext';
-import Homepage from './pages/Homepage';
-import BookPage from './pages/BookPage';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header';
 import CartPopUp from './components/CartPopUp';
+import Footer from './components/Footer';
+import AccessibilityPage from './pages/AccessibilityPage';
+import BookPage from './pages/BookPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ContactPage from './pages/ContactPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Homepage from './pages/Homepage';
+import NotFoundPage from './pages/NotFoundPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsOfUsePage from './pages/TermsOfUsePage';
-import AccessibilityPage from './pages/AccessibilityPage';
-import NotFoundPage from './pages/NotFoundPage';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
