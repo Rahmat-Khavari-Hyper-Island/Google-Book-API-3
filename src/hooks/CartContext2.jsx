@@ -1,25 +1,46 @@
 import { createContext, useState, useEffect } from 'react';
+
 export const CartContext2 = createContext();
 
 const CartProvider2 = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    // Initialize cart with data from local storage, or an empty array if not available
+    const storedCart = localStorage.getItem('cart');
+    try {
+      const parsedCart = JSON.parse(storedCart);
+      return Array.isArray(parsedCart) ? parsedCart : [];
+    } catch (error) {
+      console.error('Error parsing cart from local storage:', error);
+      return [];
+    }
+  });
 
-  const additem = (id) => {
-    const itemIndex = cart.findIndex((item) => item.id === id);
-    if (itemIndex !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[itemIndex].quantity += 1;
+  useEffect(() => {
+    // Save cart data to local storage whenever it changes
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const addItem = (id) => {
+    // Check if the item is already in the cart
+    const item = cart.find((item) => item.id === id);
+
+    if (item) {
+      // If the item is already in the cart, increase its quantity
+      const updatedCart = cart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
       setCart(updatedCart);
     } else {
+      // If the item is not in the cart, add it with quantity 1
       const newItem = { id, quantity: 1 };
       setCart([...cart, newItem]);
     }
   };
 
-  console.log(cart);
+  console.log(cart); // Log the updated cart whenever it changes
 
   return (
-    <CartContext2.Provider value={{ additem }}>
+    <CartContext2.Provider value={{ addItem }}>
       {children}
     </CartContext2.Provider>
   );

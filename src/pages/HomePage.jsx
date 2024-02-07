@@ -5,10 +5,10 @@ import { CartContext2 } from '../hooks/CartContext2';
 
 const Homepage = () => {
   const { books } = useContext(BookContext);
-  const { additem } = useContext(CartContext2);
+  const { addItem } = useContext(CartContext2);
 
   const handleAddItemToCart = (id) => {
-    additem(id);
+    addItem(id);
   };
 
   return (
