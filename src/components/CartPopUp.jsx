@@ -10,6 +10,11 @@ const CartPopUp = ({ isOpen, closeCart }) => {
 
   const { cart } = useContext(CartContext2);
 
+  // Calculate total price
+  const totalAmount = cart
+    .reduce((total, item) => total + item.totalPrice, 0)
+    .toFixed(2);
+
   return (
     <div
       className={`position-fixed shadow end-0 bg-light ${
@@ -27,17 +32,18 @@ const CartPopUp = ({ isOpen, closeCart }) => {
         <ul>
           {cart.map(
             (
-              { id, title, quantity } // Destructure id, title, and quantity from each item
+              { id, title, quantity, totalPrice } // Destructure id, title, and quantity from each item
             ) => (
               <li key={id}>
-                {title} - {quantity}{' '}
+                {quantity} : {title} = {`${totalPrice} SEK`}{' '}
                 <button className='btn btn-warning'>remove</button>
               </li>
             )
           )}
         </ul>
 
-        {/* <div>Total: {totalAmount}</div> */}
+        {/* Display total price */}
+        <div>Total: {totalAmount} SEK</div>
 
         <div className='d-flex justify-content-between mt-3'>
           <Link to='/checkout' className='btn btn-success'>
