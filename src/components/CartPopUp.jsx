@@ -8,7 +8,7 @@ const CartPopUp = ({ isOpen, closeCart }) => {
     transition: 'transform 0.9s ease-in-out',
   };
 
-  const { cart } = useContext(CartContext2);
+  const { cart, removeItem } = useContext(CartContext2);
 
   // Calculate total price
   const totalAmount = cart
@@ -36,7 +36,12 @@ const CartPopUp = ({ isOpen, closeCart }) => {
             ) => (
               <li key={id}>
                 {quantity} : {title} = {`${totalPrice} SEK`}{' '}
-                <button className='btn btn-warning'>remove</button>
+                <button
+                  className='btn btn-warning'
+                  onClick={() => removeItem(id)}
+                >
+                  remove
+                </button>
               </li>
             )
           )}
